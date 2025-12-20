@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio: animation, 3D modeling, 3D printing, and coding." />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Sticky top nav: feels like "tabs", but it's a single scroll page -->
+  <header class="topbar">
+    <div class="wrap topbar-row">
+      <a class="logo" href="#home">Your Name</a>
+
+      <nav class="tabs" aria-label="Portfolio sections">
+        <a class="tab is-active" href="#animation" data-tab="animation">Animation</a>
+        <a class="tab" href="#modeling" data-tab="modeling">3D Modeling</a>
+        <a class="tab" href="#printing" data-tab="printing">3D Printing</a>
+        <a class="tab" href="#coding" data-tab="coding">Coding</a>
+        <a class="tab" href="#about" data-tab="about">About</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <a class="btn ghost" href="https://github.com/YOURUSERNAME" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="mailto:you@example.com">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1 class="h1">Clean, modern portfolio for 3D + code.</h1>
+          <p class="lead">
+            I work across animation, 3D modeling, functional 3D printing, and app development.
+            This site is organized by category for fast browsing.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn" href="#animation">View work</a>
+            <a class="btn ghost" href="#about">About me</a>
+          </div>
+
+          <p class="micro">
+            Tip: Keep GitHub Pages fast by hosting large videos on YouTube/Vimeo and linking/embedding them here.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <div class="kicker">Featured</div>
+          <h2 class="h2">Pick one flagship project</h2>
+          <p class="muted">
+            A short “why it matters” statement. (Example: rapid prototyping pipeline from CAD → print → iteration.)
+          </p>
+          <div class="chips">
+            <span class="chip">Blender</span>
+            <span class="chip">CAD</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTIONS (each feels like its own one-scroll page) -->
+    <section id="animation" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Animation</h2>
+          <p class="muted">Renders, reels, breakdowns.</p>
+        </div>
+        <div class="grid" id="grid-animation"></div>
+      </div>
+    </section>
+
+    <section id="modeling" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">3D Modeling</h2>
+          <p class="muted">Hard-surface, product concepts, clean topology.</p>
+        </div>
+        <div class="grid" id="grid-modeling"></div>
+      </div>
+    </section>
+
+    <section id="printing" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">3D Printing</h2>
+          <p class="muted">Functional prototypes, tolerance work, materials.</p>
+        </div>
+        <div class="grid" id="grid-printing"></div>
+      </div>
+    </section>
+
+    <section id="coding" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Coding</h2>
+          <p class="muted">Tools, apps, automations, UI projects.</p>
+        </div>
+        <div class="grid" id="grid-coding"></div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div>
+          <h2 class="h2">About</h2>
+          <p class="lead">
+            Write 6–10 lines: what you do, what you’re aiming for, and what you’re best at.
+          </p>
+
+          <ul class="bullets">
+            <li><b>Focus:</b> 3D / prototyping / modern tooling</li>
+            <li><b>Strength:</b> fast iteration + clean presentation</li>
+            <li><b>Open to:</b> roles in ______ or freelance work in ______</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <h3 class="h3">Links</h3>
+          <div class="link-list">
+            <a class="linkrow" href="https://www.instagram.com/YOURHANDLE" target="_blank" rel="noopener">Instagram</a>
+            <a class="linkrow" href="https://github.com/YOURUSERNAME" target="_blank" rel="noopener">GitHub</a>
+            <a class="linkrow" href="mailto:you@example.com">you@example.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap footer-row">
+        <span class="muted">© <span id="year"></span> Your Name</span>
+        <span class="muted">Hosted on GitHub Pages</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Modal (opens when you click a project) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Project details">
+      <button class="modal-close" aria-label="Close" data-close="true">✕</button>
+
+      <div class="modal-media" id="modal-media"></div>
+
+      <div class="modal-body">
+        <h3 class="h2" id="modal-title"></h3>
+        <p class="muted" id="modal-desc"></p>
+
+        <div class="chips" id="modal-tags"></div>
+        <div class="modal-links" id="modal-links"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
