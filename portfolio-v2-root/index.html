@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adam Persson</title>
+  <meta name="description" content="CAD / Modeling — Prototypes — 3D Printing — Practical problem solving" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="page-landing">
+  <header class="topnav">
+    <a class="brand" href="./">AP</a>
+    <nav class="navlinks" aria-label="Site">
+      <a href="animation/">ANIMATION</a>
+      <a href="cad/">CAD</a>
+      <a href="prints/">3D PRINTS</a>
+      <a href="code/">CODE</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-accent"></div>
+
+      <h1>ADAM<br/>PERSSON</h1>
+      <p class="hero-sub">GÖTEBORG, SE — CAD / PROTOTYPES / 3D PRINTING / CODE</p>
+      <p class="hero-micro">
+        Practical, measurement-driven workflow: measure → model → prototype → fit → iterate.
+      </p>
+
+      <a class="hero-down" href="#about" aria-label="Scroll down">⌄</a>
+    </div>
+  </main>
+
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p>
+      I work hands-on across CAD/modeling, functional prototyping, and FDM-focused design.
+      My sweet spot is turning messy real-world constraints (measurements, tolerances, materials, assembly)
+      into clean, testable designs — and iterating quickly until it fits and works.
+    </p>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>Competencies</h3>
+        <ul>
+          <li><b>Parametric CAD:</b> assemblies, interfaces, fasteners, mechanisms (locking/rotation), fit & clearance</li>
+          <li><b>DFM for FDM:</b> print orientation strategy, support minimization, material choice, strength vs. weight</li>
+          <li><b>Tolerance work:</b> press-fits, snap-fits, functional prototypes with real testing and iteration</li>
+          <li><b>Prototyping workflow:</b> measurement-driven modeling → test prints → evaluation → refinement</li>
+          <li><b>Practical troubleshooting:</b> printers (mechanics/electronics/slicer), hardware fixes, basic electronics integration</li>
+          <li><b>Software building:</b> small tools, web UIs, visualization prototypes, automation helpers</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Tools & stack</h3>
+        <div class="pills">
+          <span class="pill">Shapr3D</span>
+          <span class="pill">Blender</span>
+          <span class="pill">Cura</span>
+          <span class="pill">SuperSlicer</span>
+          <span class="pill">FDM tuning</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Python</span>
+          <span class="pill">HTML/CSS</span>
+          <span class="pill">VS Code</span>
+          <span class="pill">Git</span>
+          <span class="pill">Google Maps API</span>
+          <span class="pill">Google Cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>What I’m great at</h3>
+      <ul>
+        <li>Turning vague problems into concrete constraints and testable prototypes</li>
+        <li>Designing parts that are actually manufacturable on an FDM printer</li>
+        <li>Refining fit/function through fast iterations and clear documentation</li>
+        <li>Building simple, useful software tools that support the workflow</li>
+      </ul>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <span>© <span id="year"></span> Adam Persson</span>
+    <span class="muted">Built for GitHub Pages</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

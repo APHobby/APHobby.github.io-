@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio Importer</title>
+  <link rel="stylesheet" href="importer.css" />
+</head>
+<body>
+  <header class="bar">
+    <div class="bar-left">
+      <a class="btn" href="../">← Back to site</a>
+      <div class="title">Importer</div>
+      <div class="muted">Build <code>data/projects.json</code> without hand-editing.</div>
+    </div>
+
+    <div class="bar-right">
+      <label class="btn ghost">
+        Load existing projects.json
+        <input id="loadJson" type="file" accept="application/json" hidden />
+      </label>
+      <button id="downloadJson" class="btn">Download projects.json</button>
+      <button id="copyJson" class="btn ghost">Copy JSON</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="side">
+      <h3>Categories</h3>
+      <div id="cats" class="cats"></div>
+
+      <div class="help">
+        <h4>Filename template (optional)</h4>
+        <p class="muted">
+          Use <code>__</code> to auto-fill fields:
+        </p>
+        <pre>slug__Title__tag1,tag2__2025.mp4</pre>
+        <p class="muted">
+          Examples:
+        </p>
+        <pre>bayonet-nozzle__Bayonet Lock Nozzle__Shapr3D,FDM__2025.glb
+waterproof-case__Waterproof Case__FDM,Fit__2024__01.jpg
+motion-study__Motion Study__Blender__2025.mp4</pre>
+        <p class="muted">
+          If you add multiple files with the same <code>slug</code>, they’ll be grouped into one project as a media gallery.
+        </p>
+      </div>
+
+      <div class="help">
+        <h4>Where to copy files</h4>
+        <p class="muted">
+          Create folders:
+        </p>
+        <pre>assets/animation/
+assets/cad/
+assets/prints/
+assets/code/</pre>
+        <p class="muted">
+          Then copy your files there. The importer writes paths like:
+          <code>../assets/&lt;category&gt;/filename.ext</code>
+        </p>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="row">
+        <div class="row-left">
+          <h2 id="catTitle">animation</h2>
+          <div class="muted" id="catHint"></div>
+        </div>
+
+        <div class="row-right">
+          <label class="btn ghost">
+            Add files
+            <input id="addFiles" type="file" multiple hidden />
+          </label>
+
+          <label id="addFolderWrap" class="btn ghost" style="display:none;">
+            Add code folder
+            <input id="addFolder" type="file" webkitdirectory directory multiple hidden />
+          </label>
+
+          <button id="addEmpty" class="btn">Add empty project</button>
+        </div>
+      </div>
+
+      <div id="list" class="list"></div>
+    </section>
+  </main>
+
+  <script src="importer.js"></script>
+</body>
+</html>

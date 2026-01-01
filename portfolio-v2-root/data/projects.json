@@ -1,0 +1,116 @@
+{
+  "animation": [
+    {
+      "id": "Hibiscus Drink",
+      "title": "Hibiscus Drink Commercial",
+      "subtitle": "",
+      "year": "2024",
+      "tools": [],
+      "description": "This was a soda animation",
+      "links": [],
+      "media": {
+        "type": "video",
+        "src": "../assets/animation/Comp.mp4"
+      }
+    }
+  ],
+  "cad": [
+    {
+      "id": "bayonet-nozzle",
+      "title": "Bayonet Lock Airflow Nozzle",
+      "subtitle": "Locking mechanism + flow control",
+      "year": "2025",
+      "tools": [
+        "Shapr3D",
+        "FDM DFM"
+      ],
+      "description": "Precision-designed nozzle where axial travel controls airflow via a rotating bayonet lock mechanism.",
+      "media": {
+        "type": "placeholder"
+      }
+    },
+    {
+      "id": "ultrawide-mount",
+      "title": "Ultrawide Screen Mount (34″)",
+      "subtitle": "Re-design for stability",
+      "year": "2025",
+      "tools": [
+        "Shapr3D",
+        "Tolerance work"
+      ],
+      "description": "Reworked load-bearing parts and optimized screw holes/fit for improved stability and torque resistance.",
+      "media": {
+        "type": "placeholder"
+      }
+    }
+  ],
+  "prints": [
+    {
+      "id": "air-filtration",
+      "title": "3D Print Air Filtration Unit",
+      "subtitle": "Dual fans + carbon filter",
+      "year": "2024",
+      "tools": [
+        "FDM",
+        "Cura",
+        "Basic electronics"
+      ],
+      "description": "Designed and built a print-enclosure air filtration unit with a custom housing, dual fans, carbon filter, and a soldered DC port for power.",
+      "media": {
+        "type": "placeholder"
+      }
+    },
+    {
+      "id": "waterproof-case",
+      "title": "Waterproof Protective Case",
+      "subtitle": "Press-fit tolerances",
+      "year": "2024",
+      "tools": [
+        "FDM",
+        "Material selection"
+      ],
+      "description": "Impact-resistant waterproof case for cycling lights (used on dog equipment), focused on press-fit tolerances and durability.",
+      "media": {
+        "type": "placeholder"
+      }
+    }
+  ],
+  "code": [
+    {
+      "id": "model-importer-maps",
+      "title": "Model Importer Maps",
+      "subtitle": "Web GIS visualizer",
+      "year": "2025",
+      "tools": [
+        "JavaScript",
+        "Google Maps",
+        "GLB"
+      ],
+      "description": "Import GLB models, place markers, set camera movements/animations, and switch between a 3D environment and vector view.",
+      "links": [
+        {
+          "label": "Open app",
+          "url": "../projects/model-importer-maps/"
+        }
+      ],
+      "media": {
+        "type": "iframe",
+        "src": "../projects/model-importer-maps/index.html"
+      }
+    },
+    {
+      "id": "automation-scripts",
+      "title": "Automation & Helpers",
+      "subtitle": "Small tools that save time",
+      "year": "2025",
+      "tools": [
+        "Python",
+        "HTML/CSS"
+      ],
+      "description": "Lightweight scripts and web utilities for recurring workflows, quick analysis, and prototyping.",
+      "media": {
+        "type": "placeholder"
+      }
+    }
+  ]
+}
