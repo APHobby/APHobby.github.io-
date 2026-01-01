@@ -19,6 +19,30 @@ const modalDesc = byId("modal-desc");
 const modalTags = byId("modal-tags");
 const modalLinks = byId("modal-links");
 
+// Viewer state
+let currentCategory = null;
+let currentIndex = 0;
+let filteredProjects = [];
+
+// Create navigation arrows + carousel container inside modal-card
+const modalCard = document.querySelector(".modal-card");
+const navLeft = el("button", "viewer-arrow viewer-left", "◀");
+const navRight = el("button", "viewer-arrow viewer-right", "▶");
+const carousel = el("div", "viewer-carousel");
+navLeft.setAttribute("aria-label", "Previous project");
+navRight.setAttribute("aria-label", "Next project");
+navLeft.addEventListener("click", () => showPrev());
+navRight.addEventListener("click", () => showNext());
+carousel.addEventListener("click", (e) => {
+  const idx = e.target.closest && e.target.closest(".viewer-thumb")?.dataset?.idx;
+  if (typeof idx !== "undefined") showIndex(Number(idx));
+});
+if (modalCard) {
+  modalCard.appendChild(navLeft);
+  modalCard.appendChild(navRight);
+  modalCard.appendChild(carousel);
+}
+
 /** Create an element with optional class + text */
 function el(tag, className, text) {
   const n = document.createElement(tag);
@@ -140,6 +164,27 @@ function renderModalMedia(media) {
 
 /** Open modal and fill it with project info */
 function openModal(project) {
+  // Backwards-compatible: open modal for a single project (used by cards)
+  currentCategory = project.category || null;
+  if (currentCategory) filteredProjects = window.PROJECTS.filter(p => p.category === currentCategory);
+  currentIndex = filteredProjects.findIndex(p => p.id === project.id);
+  if (currentIndex < 0) currentIndex = 0;
+  showIndex(currentIndex);
+}
+
+function openViewerForCategory(category, index = 0) {
+  currentCategory = category;
+  filteredProjects = window.PROJECTS.filter(p => p.category === category);
+  if (!filteredProjects.length) return;
+  currentIndex = Math.max(0, Math.min(index, filteredProjects.length - 1));
+  showIndex(currentIndex);
+}
+
+function showIndex(idx) {
+  if (!filteredProjects || filteredProjects.length === 0) return;
+  currentIndex = (idx + filteredProjects.length) % filteredProjects.length;
+  const project = filteredProjects[currentIndex];
+
   modalTitle.textContent = project.title;
   modalDesc.textContent = project.description;
 
@@ -156,10 +201,14 @@ function openModal(project) {
   }
 
   renderModalMedia(project.media);
+  renderCarousel();
 
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
 }
+
+function showPrev() { showIndex(currentIndex - 1); }
+function showNext() { showIndex(currentIndex + 1); }
 
 /** Close modal */
 function closeModal() {
@@ -177,7 +226,31 @@ modal.addEventListener("click", (e) => {
 /** Close on ESC */
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
+  if (modal.classList.contains("is-open")) {
+    if (e.key === "ArrowLeft") showPrev();
+    if (e.key === "ArrowRight") showNext();
+  }
 });
+
+/** Render a small carousel of project thumbs at bottom of viewer */
+function renderCarousel() {
+  carousel.innerHTML = "";
+  if (!filteredProjects || filteredProjects.length <= 1) return;
+  filteredProjects.forEach((p, i) => {
+    const t = el("div", "viewer-thumb");
+    t.dataset.idx = i;
+    if (p.thumb && p.thumb.type === "image") {
+      const img = document.createElement("img");
+      img.src = p.thumb.src;
+      img.alt = p.title;
+      t.appendChild(img);
+    } else {
+      t.textContent = p.thumb?.text || p.title;
+    }
+    if (i === currentIndex) t.classList.add("is-active");
+    carousel.appendChild(t);
+  });
+}
 
 /** Highlight active tab while scrolling (simple + clean) */
 function setupActiveTabs() {
@@ -203,3 +276,13 @@ byId("year").textContent = new Date().getFullYear();
 
 renderAll();
 setupActiveTabs();
+
+// Intercept top tabs to open the viewer for that category (except 'about')
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", (e) => {
+    const cat = t.dataset.tab;
+    if (!cat || cat === "about") return; // allow default for about/external
+    e.preventDefault();
+    openViewerForCategory(cat, 0);
+  });
+});
